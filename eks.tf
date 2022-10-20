@@ -1,11 +1,12 @@
 locals {
   name               = basename(path.cwd)
   vpc_id             = module.aws_vpc.vpc_id
-  private_subnet_ids = var.private_subnet_ids
   tags = {
     Blueprint  = local.name
     GithubRepo = "github.com/aws-ia/terraform-aws-eks-blueprints"
   }
+  private_subnet_ids = var.private_subnet_ids
+
 }
 
 module "eks_blueprints" {
