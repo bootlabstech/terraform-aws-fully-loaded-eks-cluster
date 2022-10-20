@@ -1,14 +1,3 @@
-locals {
-  name               = basename(path.cwd)
-  #vpc_id             = module.aws_vpc.vpc_id
-  tags = {
-    Blueprint  = local.name
-    GithubRepo = "github.com/aws-ia/terraform-aws-eks-blueprints"
-  }
-  private_subnet_ids = var.private_subnet_ids
-
-}
-
 module "eks_blueprints" {
   source = "./modules/eks-blueprints"
 
@@ -38,4 +27,17 @@ module "eks_blueprints" {
 
   #Custom Tags.
   tags = local.tags
+}
+
+
+
+locals {
+  name               = basename(path.cwd)
+  #vpc_id             = module.aws_vpc.vpc_id
+  tags = {
+    Blueprint  = local.name
+    GithubRepo = "github.com/aws-ia/terraform-aws-eks-blueprints"
+  }
+  private_subnet_ids = var.private_subnet_ids
+
 }
