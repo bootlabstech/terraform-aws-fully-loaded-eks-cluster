@@ -1,15 +1,15 @@
 data "aws_eks_cluster" "cluster" {
-  name = var.eks_cluster_id
+  name = module.eks_blueprints.eks_cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = var.eks_cluster_id
+  name = module.eks_blueprints.eks_cluster_id
 }
 
 module "eks_blueprints_kubernetes_addons" {
   source = "./modules/kubernetes-addons"
 
-  eks_cluster_id       = var.eks_cluster_id
+  eks_cluster_id       = module.eks_blueprints.eks_cluster_id
   eks_cluster_endpoint = data.aws_eks_cluster.cluster.endpoint
   eks_oidc_provider    = replace(data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer, "https://", "")
   eks_cluster_version  = data.aws_eks_cluster.cluster.version

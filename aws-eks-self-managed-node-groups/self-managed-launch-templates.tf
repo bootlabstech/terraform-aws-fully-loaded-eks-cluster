@@ -1,5 +1,5 @@
 module "launch_template_self_managed_ng" {
-  source = "../launch-templates"
+  source = "./modules/launch-templates"
 
   eks_cluster_id = var.context.eks_cluster_id
   launch_template_config = {

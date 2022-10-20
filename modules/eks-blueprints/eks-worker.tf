@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "aws_eks_managed_node_groups" {
-  source = "./modules/aws-eks-managed-node-groups"
+  source = "../aws-eks-managed-node-groups"
 
   for_each = var.managed_node_groups
 
@@ -18,7 +18,7 @@ module "aws_eks_managed_node_groups" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "aws_eks_self_managed_node_groups" {
-  source = "./modules/aws-eks-self-managed-node-groups"
+  source = "../aws-eks-self-managed-node-groups"
 
   for_each = var.self_managed_node_groups
 
@@ -33,7 +33,7 @@ module "aws_eks_self_managed_node_groups" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "aws_eks_fargate_profiles" {
-  source = "./modules/aws-eks-fargate-profiles"
+  source = "../aws-eks-fargate-profiles"
 
   for_each = var.fargate_profiles
 

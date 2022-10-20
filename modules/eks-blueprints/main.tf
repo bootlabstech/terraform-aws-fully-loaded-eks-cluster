@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 module "kms" {
   count  = var.create_eks && var.cluster_kms_key_arn == null ? 1 : 0
-  source = "./modules/aws-kms"
+  source = "../aws-kms"
 
   alias                   = "alias/${var.cluster_name}"
   description             = "${var.cluster_name} EKS cluster secret encryption key"
@@ -89,7 +89,7 @@ module "aws_eks" {
 # Amazon EMR on EKS Virtual Clusters
 # ---------------------------------------------------------------------------------------------------------------------
 module "emr_on_eks" {
-  source = "./modules/emr-on-eks"
+  source = "../emr-on-eks"
 
   for_each = { for key, value in var.emr_on_eks_teams : key => value
     if var.enable_emr_on_eks && length(var.emr_on_eks_teams) > 0
@@ -125,7 +125,7 @@ resource "kubernetes_config_map" "amazon_vpc_cni" {
 # ---------------------------------------------------------------------------------------------------------------------
 module "aws_eks_teams" {
   count  = length(var.application_teams) > 0 || length(var.platform_teams) > 0 ? 1 : 0
-  source = "./modules/aws-eks-teams"
+  source = "../aws-eks-teams"
 
   application_teams             = var.application_teams
   platform_teams                = var.platform_teams
