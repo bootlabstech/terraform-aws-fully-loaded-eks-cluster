@@ -1,6 +1,6 @@
 locals {
   name               = basename(path.cwd)
-  vpc_id             = var.vpc_id
+  vpc_id             = module.aws_vpc.vpc_id
   private_subnet_ids = var.private_subnet_ids
   tags = {
     Blueprint  = local.name
