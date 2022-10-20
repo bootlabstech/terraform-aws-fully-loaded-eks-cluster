@@ -9,7 +9,7 @@ locals {
 }
 
 module "eks_blueprints" {
-  source = "./modules/eks-blueprint"
+  source = "./modules"
 
   cluster_name = local.name
 

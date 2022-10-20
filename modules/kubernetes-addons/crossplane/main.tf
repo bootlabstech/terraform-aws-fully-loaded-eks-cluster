@@ -44,7 +44,7 @@ resource "time_sleep" "wait_30_seconds" {
 
 module "aws_provider_irsa" {
   count                             = var.aws_provider.enable == true ? 1 : 0
-  source                            = "./modules/irsa"
+  source                            = "../../../modules/irsa"
   create_kubernetes_namespace       = false
   create_kubernetes_service_account = false
   kubernetes_namespace              = local.namespace
@@ -98,7 +98,7 @@ resource "kubectl_manifest" "jet_aws_provider" {
 module "jet_aws_provider_irsa" {
   count = var.jet_aws_provider.enable == true ? 1 : 0
 
-  source                            = "./modules/irsa"
+  source                            = "../../../modules/irsa"
   create_kubernetes_namespace       = false
   create_kubernetes_service_account = false
   kubernetes_namespace              = local.namespace

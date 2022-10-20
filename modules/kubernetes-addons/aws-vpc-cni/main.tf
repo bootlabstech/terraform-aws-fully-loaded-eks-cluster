@@ -26,7 +26,7 @@ resource "aws_eks_addon" "vpc_cni" {
 }
 
 module "irsa_addon" {
-  source = "./modules/irsa"
+  source = "../../../modules/irsa"
 
   count = local.create_irsa ? 1 : 0
 
